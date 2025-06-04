@@ -51,7 +51,7 @@ export default function Record() {
       let response;
       if (isNew) {
         // if we are adding a new record we will POST to /record.
-        response = await fetch("http://localhost:5050/record", {
+        response = await fetch("http://backend:5050/api/records", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
