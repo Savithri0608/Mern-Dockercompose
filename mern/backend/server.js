@@ -2,23 +2,22 @@ import express from "express";
 import cors from "cors";
 import records from "./routes/record.js";
 
-const PORT = process.env.PORT || 5050;
-const app = express();
-const cors = require('cors');
-const express = require('express');
 const app = express();
 
+// CORS setup
 app.use(cors({
-  origin: 'http://52.23.232.26:5173',  // Replace with actual IP or domain
-  credentials: true,                     // If using cookies or sessions
+  origin: 'http://52.23.232.26:5173',  // Your frontend URL
+  credentials: true,
 }));
 
+// Middleware
 app.use(express.json());
+
+// Routes
 app.use("/record", records);
 
-
-// start the Express server
-app.listen(5050, '0.0.0.0', () => {
-  console.log("Server running on 5050");
+// Start server
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
